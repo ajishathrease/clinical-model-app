@@ -57,7 +57,7 @@ def load_model_and_scaler(model_path: str = "artifacts/model.pth",
                            scaler_path: str = "artifacts/scaler.pkl",
                            device: str = "cpu"):
     """Load the trained multimodal model and the fitted clinical scaler."""
-    checkpoint = torch.load(model_path, map_location=device)
+    checkpoint = torch.load(model_path, map_location=device, weights_only=False)
 
     model = MultimodalBreastCancerNet(
         backbone_name=checkpoint["backbone"],
